@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aliyan Hameed | DevOps Engineer</title>
+<meta name="description" content="Aliyan Hameed, DevOps engineer working with AWS, Terraform, Kubernetes and CI/CD. Open to remote roles.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">Aliyan Hameed</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap" id="home">
+  <h1>I build cloud infrastructure that deploys itself and recovers from failure.</h1>
+  <p class="lede">I’m Aliyan, a DevOps engineer working with AWS, Terraform, Kubernetes and CI/CD pipelines. I’m based in Islamabad and open to remote roles.</p>
+  <p class="cta">
+    <a class="btn primary" href="#projects">See my projects</a>
+    <a class="btn" href="https://linkedin.com/in/devops-aalyian-740142439" rel="noopener">LinkedIn</a>
+  </p>
+</section>
+
+<section class="wrap" id="about">
+  <h2>About</h2>
+  <p>I’m a DevOps engineer with a Bachelor of Software Engineering from Gomal University (2022). I automate infrastructure with Terraform and Ansible, run workloads on Kubernetes (EKS), and ship code through Jenkins, GitHub Actions and ArgoCD.</p>
+  <p class="todo">Add two sentences here about the kind of team you want to join and what you care about in your work.</p>
+</section>
+
+<section class="wrap" id="skills">
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card"><h3>Cloud</h3><p>AWS: EKS, VPC, IAM, Route53, S3</p></div>
+    <div class="card"><h3>Infrastructure as code</h3><p>Terraform, Ansible</p></div>
+    <div class="card"><h3>Containers</h3><p>Docker, Kubernetes (EKS)</p></div>
+    <div class="card"><h3>CI/CD</h3><p>Jenkins, GitHub Actions, ArgoCD</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="experience">
+  <h2>Experience</h2>
+  <ol class="timeline">
+    <li>
+      <time>Feb 2025 to present</time>
+      <h3>DevOps Engineer, CloudQuik</h3>
+      <p class="todo">Add 2 or 3 results here, with numbers where you can (deploy time cut, cost saved, uptime).</p>
+    </li>
+    <li>
+      <time>Mar 2022 to Dec 2024</time>
+      <h3>Junior DevOps Engineer, Ewarenet</h3>
+      <p class="todo">Add 2 or 3 results here.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="wrap" id="projects">
+  <h2>Projects</h2>
+  <h3>Multi-region disaster recovery on AWS</h3>
+  <p>A three-tier app that survives the loss of an entire AWS region. Aurora replicates to us-west-2, a pilot-light copy of the app stays ready, and Route53 health checks move traffic automatically. Terraform, EKS, ArgoCD and GitHub Actions (OIDC) deliver it to both regions.</p>
+
+  <div class="sim" id="sim">
+    <div class="sim-head">
+      <p>Try it: take down the primary region.</p>
+      <button class="act" id="toggle" type="button" data-mode="fail">Simulate regional outage</button>
+    </div>
+    <div class="dns" id="dns" aria-live="polite">Route53 → us-east-1 (primary)</div>
+    <div class="regions">
+      <div class="region east live" id="east">
+        <h4>Primary <span>us-east-1</span></h4>
+        <div class="badge" id="east-badge">Serving traffic</div>
+        <dl><dt>ALB</dt><dd id="east-alb">healthy</dd><dt>EKS pods</dt><dd id="east-eks">3 running</dd><dt>Aurora</dt><dd id="east-db">writer</dd></dl>
+      </div>
+      <div class="region west" id="west">
+        <h4>DR <span>us-west-2</span></h4>
+        <div class="badge" id="west-badge">Standby</div>
+        <dl><dt>ALB</dt><dd id="west-alb">healthy</dd><dt>EKS pods</dt><dd id="west-eks">1 running (pilot light)</dd><dt>Aurora</dt><dd id="west-db">read replica</dd></dl>
+      </div>
+    </div>
+    <ol class="steps" id="steps" aria-live="polite">
+      <li>Primary region stops answering</li>
+      <li>Route53 health check fails</li>
+      <li>Aurora promotes the DR cluster to writer</li>
+      <li>EKS in us-west-2 scales from 1 pod to 3</li>
+      <li>DNS points to us-west-2 and users are served again</li>
+    </ol>
+    <p class="note">Illustrative animation. Real measured recovery times go in the table below.</p>
+  </div>
+
+  <div class="scroll" role="region" aria-label="Recovery targets" tabindex="0">
+    <table>
+      <thead><tr><th>Metric</th><th>Target</th><th>Measured</th></tr></thead>
+      <tbody>
+        <tr><td>RTO (time to recover)</td><td>15 minutes</td><td class="todo">Add after the failover test</td></tr>
+        <tr><td>RPO (maximum data loss)</td><td>5 minutes</td><td class="todo">Add after the failover test</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><a href="https://github.com/YOUR-USERNAME/aws-multi-region-dr-platform" rel="noopener">View the code on GitHub</a></p>
+</section>
+
+<section class="wrap" id="contact">
+  <h2>Contact</h2>
+  <p>I’m looking for remote DevOps roles. The quickest way to reach me is LinkedIn.</p>
+  <p class="cta">
+    <a class="btn primary" href="https://linkedin.com/in/devops-aalyian-740142439" rel="noopener">Message me on LinkedIn</a>
+    <a class="btn" href="https://github.com/YOUR-USERNAME" rel="noopener">GitHub</a>
+    <a class="btn" href="mailto:YOUR-EMAIL@example.com">Email</a>
+  </p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Aliyan Hameed</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
